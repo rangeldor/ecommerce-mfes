@@ -22,7 +22,7 @@
       "@ecommerce/shared-ui": ["libs/shared/ui/src/index.ts"],
       "@ecommerce/shared-ui/*": ["libs/shared/ui/src/*"]
     },
-    "types": ["vite/client"],
+    "types": ["vite/client", "vitest/globals", "@testing-library/jest-dom"],
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true

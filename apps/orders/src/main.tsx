@@ -1,7 +1,7 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useState } from "react";
 import "./styles.css";
-import OrdersPage from "./pages/OrdersPage";
+import { OrdersPage } from "./pages/OrdersPage";
 
 function OrdersQueryProvider({ children }: { children: React.ReactNode }) {
   const [queryClient] = useState(
@@ -21,16 +21,12 @@ function OrdersQueryProvider({ children }: { children: React.ReactNode }) {
   );
 }
 
-function OrdersPageWithProvider() {
+export { OrdersPage };
+
+export function OrdersPageWithProvider() {
   return (
     <OrdersQueryProvider>
       <OrdersPage />
     </OrdersQueryProvider>
   );
 }
-
-export { OrdersPage };
-export { OrderCard } from "./components/OrderCard";
-export { useOrders, useOrder, useCreateOrder } from "./hooks/useOrders";
-
-export default OrdersPageWithProvider;

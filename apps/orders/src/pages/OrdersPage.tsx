@@ -59,7 +59,7 @@ interface OrdersPageProps {
   onViewDetails?: (order: Order) => void;
 }
 
-export default function OrdersPage({ onViewDetails }: OrdersPageProps) {
+export function OrdersPage({ onViewDetails }: OrdersPageProps) {
   const { data: orders, isLoading, error } = useOrders();
 
   if (isLoading) {
@@ -70,7 +70,7 @@ export default function OrdersPage({ onViewDetails }: OrdersPageProps) {
     return <ErrorState message={(error as Error).message} />;
   }
 
-  if (!orders || !Array.isArray(orders) || orders.length === 0) {
+  if (!Array.isArray(orders) || orders.length === 0) {
     return <EmptyState />;
   }
 

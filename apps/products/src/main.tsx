@@ -21,16 +21,12 @@ function ProductsQueryProvider({ children }: { children: React.ReactNode }) {
   );
 }
 
-function ProductsPageWithProvider() {
+export { ProductsPage };
+
+export function ProductsPageWithProvider() {
   return (
     <ProductsQueryProvider>
       <ProductsPage />
     </ProductsQueryProvider>
   );
 }
-
-export { ProductsPage };
-export { ProductCard } from "./components/ProductCard";
-export { useProducts, useProduct } from "./hooks/useProducts";
-
-export default ProductsPageWithProvider;

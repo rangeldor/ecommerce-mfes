@@ -1,13 +1,16 @@
 declare module "auth/LoginPage" {
   import type { ComponentType } from "react";
-  const LoginPage: ComponentType;
-  export default LoginPage;
+  export function LoginPage(): JSX.Element;
 }
 
 declare module "auth/RegisterPage" {
   import type { ComponentType } from "react";
-  const RegisterPage: ComponentType;
-  export default RegisterPage;
+  export function RegisterPage(): JSX.Element;
+}
+
+declare module "products/ProductsPageWithProvider" {
+  import type { ComponentType } from "react";
+  export function ProductsPageWithProvider(): JSX.Element;
 }
 
 declare module "products/ProductsPage" {
@@ -15,8 +18,7 @@ declare module "products/ProductsPage" {
   interface ProductsPageProps {
     onAddToCart?: (product: unknown) => void;
   }
-  const ProductsPage: ComponentType<ProductsPageProps>;
-  export default ProductsPage;
+  export function ProductsPage(props: ProductsPageProps): JSX.Element;
 }
 
 declare module "products/ProductCard" {
@@ -26,8 +28,12 @@ declare module "products/ProductCard" {
     onAddToCart?: (product: unknown) => void;
     className?: string;
   }
-  const ProductCard: ComponentType<ProductCardProps>;
-  export default ProductCard;
+  export function ProductCard(props: ProductCardProps): JSX.Element;
+}
+
+declare module "orders/OrdersPageWithProvider" {
+  import type { ComponentType } from "react";
+  export function OrdersPageWithProvider(): JSX.Element;
 }
 
 declare module "orders/OrdersPage" {
@@ -35,8 +41,7 @@ declare module "orders/OrdersPage" {
   interface OrdersPageProps {
     onViewDetails?: (order: unknown) => void;
   }
-  const OrdersPage: ComponentType<OrdersPageProps>;
-  export default OrdersPage;
+  export function OrdersPage(props: OrdersPageProps): JSX.Element;
 }
 
 declare module "orders/OrderCard" {
@@ -46,8 +51,5 @@ declare module "orders/OrderCard" {
     onViewDetails?: (order: unknown) => void;
     className?: string;
   }
-  const OrderCard: ComponentType<OrderCardProps>;
-  export default OrderCard;
+  export function OrderCard(props: OrderCardProps): JSX.Element;
 }
-
-

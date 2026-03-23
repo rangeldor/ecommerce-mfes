@@ -7,7 +7,7 @@ import {
   CardTitle,
 } from "@ecommerce/shared-ui";
 
-export default function RegisterPage() {
+export function RegisterPage() {
   return (
     <div className="flex items-center justify-center min-h-[80vh]">
       <Card className="w-full max-w-md">

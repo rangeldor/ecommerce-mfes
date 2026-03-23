@@ -1,14 +1,14 @@
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, type ComponentType } from "react";
 import { Providers } from "./components/Providers";
 import { Layout } from "./components/Layout";
 import { ErrorBoundary } from "./components/ErrorBoundary";
 import { Skeleton } from "@ecommerce/shared-ui";
 import { useAuthStore } from "./stores/authStore";
 
-const LoginMFE = lazy(() => import("auth/LoginPage"));
-const RegisterMFE = lazy(() => import("auth/RegisterPage"));
-const ProductsMFE = lazy(() => import("products/ProductsPage"));
-const OrdersMFE = lazy(() => import("orders/OrdersPage"));
+const LoginMFE = lazy(() => import("auth/LoginPage").then(m => ({ default: m.LoginPage as unknown as ComponentType })));
+const RegisterMFE = lazy(() => import("auth/RegisterPage").then(m => ({ default: m.RegisterPage as unknown as ComponentType })));
+const ProductsMFE = lazy(() => import("products/ProductsPageWithProvider").then(m => ({ default: m.ProductsPageWithProvider as unknown as ComponentType })));
+const OrdersMFE = lazy(() => import("orders/OrdersPageWithProvider").then(m => ({ default: m.OrdersPageWithProvider as unknown as ComponentType })));
 
 function LoadingFallback() {
   return (

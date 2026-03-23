@@ -2,7 +2,16 @@
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "outDir": "../../dist/out-tsc/apps/products",
-    "types": ["vite/client", "vitest"]
+    "types": ["vite/client", "vitest"],
+    "baseUrl": "../..",
+    "paths": {
+      "@ecommerce/shared": ["libs/shared/src/index.ts"],
+      "@ecommerce/shared/*": ["libs/shared/src/*"],
+      "@ecommerce/shared-ui": ["libs/shared/ui/src/index.ts"],
+      "@ecommerce/shared-ui/*": ["libs/shared/ui/src/*"],
+      "@ecommerce/shared/ui": ["libs/shared/ui/src/index.ts"],
+      "@ecommerce/shared/ui/*": ["libs/shared/ui/src/*"]
+    }
   },
   "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.stories.tsx"],
   "exclude": ["src/**/*.test.ts", "src/**/*.spec.ts"]

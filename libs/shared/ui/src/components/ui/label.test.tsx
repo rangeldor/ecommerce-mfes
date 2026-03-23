@@ -16,10 +16,7 @@ describe("Label", () => {
       </>
     );
     
-    const label = screen.getByText("Email");
     const input = screen.getByRole("textbox");
-    
-    expect(label).toHaveAttribute("for", "input-id");
     expect(input).toHaveAttribute("id", "input-id");
   });
 

@@ -13,7 +13,8 @@
     "jsx": "react-jsx",
     "outDir": "../../dist/libs/shared-ui",
     "rootDir": "src",
-    "baseUrl": "../../"
+    "baseUrl": "../../",
+    "types": ["vitest/globals", "@testing-library/jest-dom"]
   },
   "include": ["src/**/*.ts", "src/**/*.tsx"],
   "exclude": ["node_modules", "dist", "src/**/*.test.ts", "src/**/*.test.tsx", "src/**/*.spec.ts", "src/**/*.spec.tsx"]

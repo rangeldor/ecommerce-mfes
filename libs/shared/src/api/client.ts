@@ -1,9 +1,9 @@
 import axios, { type AxiosInstance } from "axios";
 
 const API_BASE_URLS = {
-  auth: import.meta.env.VITE_AUTH_API_URL || "http://localhost:3001",
-  products: import.meta.env.VITE_PRODUCTS_API_URL || "http://localhost:3002",
-  orders: import.meta.env.VITE_ORDERS_API_URL || "http://localhost:3003",
+  auth: import.meta.env.VITE_AUTH_API_URL || "http://127.0.0.1:3001",
+  products: import.meta.env.VITE_PRODUCTS_API_URL || "http://127.0.0.1:3002",
+  orders: import.meta.env.VITE_ORDERS_API_URL || "http://127.0.0.1:3003",
 } as const;
 
 export type ApiType = keyof typeof API_BASE_URLS;

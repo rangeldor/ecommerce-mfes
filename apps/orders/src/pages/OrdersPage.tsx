@@ -70,7 +70,7 @@ export default function OrdersPage({ onViewDetails }: OrdersPageProps) {
     return <ErrorState message={(error as Error).message} />;
   }
 
-  if (!orders || orders.length === 0) {
+  if (!orders || !Array.isArray(orders) || orders.length === 0) {
     return <EmptyState />;
   }
 

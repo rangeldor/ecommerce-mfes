@@ -17,7 +17,7 @@
     "noFallthroughCasesInSwitch": true,
     "baseUrl": ".",
     "paths": {
-      "@ecommerce/shared": ["libs/shared/src"],
+      "@ecommerce/shared": ["libs/shared/src/index.ts"],
       "@ecommerce/shared/*": ["libs/shared/src/*"],
       "@ecommerce/shared-ui": ["libs/shared/ui/src/index.ts"],
       "@ecommerce/shared-ui/*": ["libs/shared/ui/src/*"]

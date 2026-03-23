@@ -1,0 +1,35 @@
+{
+  "name": "@ecommerce/auth",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/auth/src",
+  "projectType": "application",
+  "implicitDependencies": ["@ecommerce/shared"],
+  "targets": {
+    "dev": {
+      "executor": "@nx/vite:dev-server",
+      "options": {
+        "buildTarget": "@ecommerce/auth:build",
+        "port": 3005
+      },
+      "dependsOn": ["^build"]
+    },
+    "build": {
+      "executor": "@nx/vite:build",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "configFile": "apps/auth/vite.config.ts",
+        "outputPath": "dist/apps/auth"
+      }
+    },
+    "preview": {
+      "executor": "@nx/vite:preview"
+    },
+    "test": {
+      "executor": "@nx/vite:test"
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    }
+  },
+  "tags": []
+}

@@ -1,0 +1,9 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "outDir": "../../dist/out-tsc/apps/products",
+    "types": ["vite/client", "vitest"]
+  },
+  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.stories.tsx"],
+  "exclude": ["src/**/*.test.ts", "src/**/*.spec.ts"]
+}

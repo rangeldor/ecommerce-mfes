@@ -1,0 +1,13 @@
+{
+  "name": "@ecommerce/shared-ui",
+  "version": "1.0.0",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "dependencies": {
+    "clsx": "latest",
+    "tailwind-merge": "latest",
+    "class-variance-authority": "latest",
+    "@radix-ui/react-label": "latest",
+    "@radix-ui/react-slot": "latest"
+  }
+}

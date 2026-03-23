@@ -31,6 +31,22 @@ declare module "products/ProductCard" {
   export function ProductCard(props: ProductCardProps): JSX.Element;
 }
 
+declare module "products/useProductFilters" {
+  export interface ProductFilters {
+    search: string;
+    category: string;
+    minPrice: number | null;
+    maxPrice: number | null;
+    sortBy: string;
+  }
+  export function useProductFilters(): {
+    filters: ProductFilters;
+    updateFilter: <K extends keyof ProductFilters>(key: K, value: ProductFilters[K]) => void;
+    resetFilters: () => void;
+    hasActiveFilters: boolean;
+  };
+}
+
 declare module "orders/OrdersPageWithProvider" {
   import type { ComponentType } from "react";
   export function OrdersPageWithProvider(): JSX.Element;

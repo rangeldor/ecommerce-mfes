@@ -2,6 +2,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useState } from "react";
 import "./styles.css";
 import { ProductsPage } from "./pages/ProductsPage";
+import { useProductFilters } from "./hooks/useProductFilters";
 
 function ProductsQueryProvider({ children }: { children: React.ReactNode }) {
   const [queryClient] = useState(
@@ -22,6 +23,7 @@ function ProductsQueryProvider({ children }: { children: React.ReactNode }) {
 }
 
 export { ProductsPage };
+export { useProductFilters };
 
 export function ProductsPageWithProvider() {
   return (

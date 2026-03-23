@@ -84,5 +84,6 @@ export default defineConfig({
       "@ecommerce/shared": resolve(workspaceRoot, "libs/shared/src"),
       "@ecommerce/shared-ui": resolve(workspaceRoot, "libs/shared/ui/src"),
     },
+    dedupe: ["react", "react-dom"],
   },
 });

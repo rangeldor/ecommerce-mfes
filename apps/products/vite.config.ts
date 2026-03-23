@@ -29,6 +29,7 @@ export default defineConfig({
         "./ProductsPage": resolve(workspaceRoot, "apps/products/src/pages/ProductsPage.tsx"),
         "./ProductsPageWithProvider": resolve(workspaceRoot, "apps/products/src/main.tsx"),
         "./ProductCard": resolve(workspaceRoot, "apps/products/src/components/ProductCard.tsx"),
+        "./useProductFilters": resolve(workspaceRoot, "apps/products/src/hooks/useProductFilters.ts"),
       },
       remotes: {
         host: {
@@ -85,5 +86,6 @@ export default defineConfig({
       "@ecommerce/shared": resolve(workspaceRoot, "libs/shared/src"),
       "@ecommerce/shared-ui": resolve(workspaceRoot, "libs/shared/ui/src"),
     },
+    dedupe: ["react", "react-dom"],
   },
 });

@@ -56,7 +56,7 @@ interface ProductsPageProps {
   onAddToCart?: (product: Product) => void;
 }
 
-export default function ProductsPage({ onAddToCart }: ProductsPageProps) {
+export function ProductsPage({ onAddToCart }: ProductsPageProps) {
   const { data: products, isLoading, error } = useProducts();
 
   if (isLoading) {

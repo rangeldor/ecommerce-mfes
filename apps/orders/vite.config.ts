@@ -26,7 +26,7 @@ export default defineConfig({
       filename: "remoteEntry.js",
       exposes: {
         "./Module": resolve(workspaceRoot, "apps/orders/src/main.tsx"),
-        "./OrdersPage": resolve(workspaceRoot, "apps/orders/src/pages/OrdersPage.tsx"),
+        "./OrdersPage": resolve(workspaceRoot, "apps/orders/src/main.tsx"),
         "./OrderCard": resolve(workspaceRoot, "apps/orders/src/components/OrderCard.tsx"),
       },
       remotes: {

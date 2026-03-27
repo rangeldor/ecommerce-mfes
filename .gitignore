@@ -1,6 +1,9 @@
 # Dependencies
 node_modules/
 
+# Package locks (use root package-lock.json)
+**/package-lock.json
+
 # Build
 dist/
 build/

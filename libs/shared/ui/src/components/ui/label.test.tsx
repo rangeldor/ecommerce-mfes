@@ -1,4 +1,5 @@
 import { describe, it, expect } from "vitest";
+import "@testing-library/jest-dom";
 import { render, screen } from "@testing-library/react";
 import { Label } from "./label";
 
@@ -12,7 +13,7 @@ describe("Label", () => {
     render(
       <>
         <Label htmlFor="input-id">Email</Label>
-        <input id="input-id" type="email" />
+        <input id="input-id" type="email" aria-label="Email" />
       </>
     );
     

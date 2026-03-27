@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "main": "./src/index.ts",
   "types": "./src/index.ts",
+  "devDependencies": {
+    "@testing-library/jest-dom": "latest"
+  },
   "dependencies": {
     "clsx": "latest",
     "tailwind-merge": "latest",

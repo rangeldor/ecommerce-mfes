@@ -13,11 +13,21 @@ interface AuthState {
   logout: () => void;
   updateToken: (token: string, refreshToken?: string) => void;
   setLoading: (loading: boolean) => void;
+  checkTokenExpiration: () => boolean;
+}
+
+function isTokenExpired(token: string): boolean {
+  try {
+    const payload = JSON.parse(atob(token.split(".")[1]));
+    return payload.exp ? payload.exp * 1000 < Date.now() : false;
+  } catch {
+    return true;
+  }
 }
 
 export const useAuthStore = create<AuthState>()(
   persist(
-    (set) => ({
+    (set, get) => ({
       user: null,
       token: null,
       refreshToken: null,
@@ -37,6 +47,7 @@ export const useAuthStore = create<AuthState>()(
 
       logout: () => {
         setAuthToken(null);
+        localStorage.removeItem("ecommerce-auth-storage");
         set({
           user: null,
           token: null,
@@ -44,6 +55,7 @@ export const useAuthStore = create<AuthState>()(
           isAuthenticated: false,
           isLoading: false,
         });
+        window.location.href = "/auth/login";
       },
 
       updateToken: (token: string, refreshToken?: string) => {
@@ -57,6 +69,16 @@ export const useAuthStore = create<AuthState>()(
       setLoading: (loading: boolean) => {
         set({ isLoading: loading });
       },
+
+      checkTokenExpiration: () => {
+        const { token } = get();
+        if (!token) return true;
+        if (isTokenExpired(token)) {
+          get().logout();
+          return true;
+        }
+        return false;
+      },
     }),
     {
       name: "ecommerce-auth-storage",
@@ -69,7 +91,16 @@ export const useAuthStore = create<AuthState>()(
       }),
       onRehydrateStorage: () => (state) => {
         if (state?.token) {
-          setAuthToken(state.token);
+          if (isTokenExpired(state.token)) {
+            setAuthToken(null);
+            state.token = null;
+            state.refreshToken = null;
+            state.isAuthenticated = false;
+            localStorage.removeItem("ecommerce-auth-storage");
+            window.location.href = "/auth/login";
+          } else {
+            setAuthToken(state.token);
+          }
         }
         state && (state.isLoading = false);
       },

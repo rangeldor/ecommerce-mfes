@@ -39,44 +39,7 @@ export default defineConfig({
           shareScope: "default",
         },
       },
-      shared: {
-        react: {
-          requiredVersion: "^18.3.0",
-          singleton: true,
-        },
-        "react-dom": {
-          requiredVersion: "^18.3.0",
-          singleton: true,
-        },
-        "react/jsx-runtime": {
-          requiredVersion: "^18.3.0",
-          singleton: true,
-        },
-        zustand: {
-          requiredVersion: "^5.0.0",
-          singleton: true,
-        },
-        "@tanstack/react-query": {
-          requiredVersion: "^5.60.0",
-          singleton: true,
-        },
-        "react-hook-form": {
-          requiredVersion: "^7.53.0",
-          singleton: true,
-        },
-        "@hookform/resolvers": {
-          requiredVersion: "^3.9.0",
-          singleton: true,
-        },
-        axios: {
-          requiredVersion: "^1.7.0",
-          singleton: true,
-        },
-        zod: {
-          requiredVersion: "^3.23.0",
-          singleton: true,
-        },
-      },
+      shared: ["react", "react-dom"],
     }),
     react(),
   ],

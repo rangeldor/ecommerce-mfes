@@ -2,6 +2,9 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useState } from "react";
 import "./styles.css";
 import { OrdersPage } from "./pages/OrdersPage";
+import { useAuthStore } from "@ecommerce/shared/stores/authStore";
+
+useAuthStore.getState();
 
 function OrdersQueryProvider({ children }: { children: React.ReactNode }) {
   const [queryClient] = useState(

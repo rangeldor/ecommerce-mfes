@@ -1,13 +1,12 @@
-import { lazy, Suspense, type ComponentType } from "react";
+import { lazy, Suspense, type ComponentType, useEffect } from "react";
 import { Providers } from "./components/Providers";
 import { Layout } from "./components/Layout";
 import { ErrorBoundary } from "./components/ErrorBoundary";
 import { Skeleton } from "@ecommerce/shared-ui";
 import { useAuthStore } from "./stores/authStore";
 
-const LoginMFE = lazy(() => import("auth/LoginPage").then(m => ({ default: m.LoginPage as unknown as ComponentType })));
-const RegisterMFE = lazy(() => import("auth/RegisterPage").then(m => ({ default: m.RegisterPage as unknown as ComponentType })));
-const ProductsMFE = lazy(() => import("products/ProductsPageWithProvider").then(m => ({ default: m.ProductsPageWithProvider as unknown as ComponentType })));
+const AuthMFE = lazy(() => import("auth/AuthApp").then(m => ({ default: m.AuthApp as unknown as ComponentType })));
+const ProductsMFE = lazy(() => import("products/ProductsPageWithNuqs").then(m => ({ default: (m as any).ProductsPageWithNuqs as unknown as ComponentType })));
 const OrdersMFE = lazy(() => import("orders/OrdersPageWithProvider").then(m => ({ default: m.OrdersPageWithProvider as unknown as ComponentType })));
 
 function LoadingFallback() {
@@ -54,14 +53,23 @@ function HomePage() {
 
 function App() {
   const path = window.location.pathname;
+  const isAuthenticated = useAuthStore((state) => state.isAuthenticated);
+
+  useEffect(() => {
+    if (isAuthenticated && path.startsWith("/auth")) {
+      window.location.href = "/products";
+    }
+  }, [isAuthenticated, path]);
 
   const renderContent = () => {
     if (path.startsWith("/auth")) {
-      const AuthComponent = path.includes("/register") ? RegisterMFE : LoginMFE;
+      if (isAuthenticated) {
+        return null;
+      }
       return (
         <ErrorBoundary>
           <Suspense fallback={<LoadingFallback />}>
-            <AuthComponent />
+            <AuthMFE />
           </Suspense>
         </ErrorBoundary>
       );

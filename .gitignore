@@ -41,6 +41,7 @@ storybook-static/
 
 # Module Federation
 .__mf__/
+.__mf__temp/
 .mf/
 
 # Temp files
